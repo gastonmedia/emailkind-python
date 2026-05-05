@@ -29,8 +29,8 @@ dependencies = ["requests>=2.20"]
 [project.urls]
 Homepage = "https://emailkind.com"
 Documentation = "https://emailkind.com/docs/sdks"
-Repository = "https://github.com/emailkind/emailkind-python"
-Changelog = "https://github.com/emailkind/emailkind-python/releases"
+Repository = "https://github.com/gastonmedia/emailkind-python"
+Changelog = "https://github.com/gastonmedia/emailkind-python/releases"
 
 [tool.setuptools.packages.find]
 include = ["emailkind*"]
