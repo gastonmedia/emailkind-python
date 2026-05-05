@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emailkind"
+version = "0.1.0"
+description = "Python SDK for the EmailKind API — classify emails by provider and type"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [{ name = "EmailKind", email = "support@emailkind.com" }]
+keywords = ["email", "classification", "provider", "api", "enrichment"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Communications :: Email",
+]
+dependencies = ["requests>=2.20"]
+
+[project.urls]
+Homepage = "https://emailkind.com"
+Documentation = "https://emailkind.com/docs/sdks"
+Repository = "https://github.com/emailkind/emailkind-python"
+Changelog = "https://github.com/emailkind/emailkind-python/releases"
+
+[tool.setuptools.packages.find]
+include = ["emailkind*"]
