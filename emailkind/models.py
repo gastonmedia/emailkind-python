@@ -38,6 +38,7 @@ class Classification(object):
     is_disposable = False  # type: bool
     is_education = False  # type: bool
     is_custom_domain = False  # type: bool
+    is_role = False  # type: bool
 
     def __init__(
         self,
@@ -46,12 +47,14 @@ class Classification(object):
         is_disposable=False,
         is_education=False,
         is_custom_domain=False,
+        is_role=False,
     ):
         self.is_business = is_business
         self.is_free = is_free
         self.is_disposable = is_disposable
         self.is_education = is_education
         self.is_custom_domain = is_custom_domain
+        self.is_role = is_role
 
     @classmethod
     def from_dict(cls, data):
@@ -64,6 +67,7 @@ class Classification(object):
             is_disposable=data.get("is_disposable", False),
             is_education=data.get("is_education", False),
             is_custom_domain=data.get("is_custom_domain", False),
+            is_role=data.get("is_role", False),
         )
 
 
@@ -73,10 +77,12 @@ class Company(object):
 
     name = ""  # type: str
     source = ""  # type: str
+    has_favicon = False  # type: bool
 
-    def __init__(self, name="", source=""):
+    def __init__(self, name="", source="", has_favicon=False):
         self.name = name
         self.source = source
+        self.has_favicon = has_favicon
 
     @classmethod
     def from_dict(cls, data):
@@ -86,6 +92,7 @@ class Company(object):
         return cls(
             name=data.get("name", ""),
             source=data.get("source", ""),
+            has_favicon=data.get("has_favicon", False),
         )
 
 
@@ -96,6 +103,7 @@ class ClassifyResult(object):
     success = True  # type: bool
     request_id = ""  # type: str
     email = ""  # type: str
+    normalized_email = ""  # type: str
     domain = ""  # type: str
     provider = None  # type: Optional[Provider]
     classification = None  # type: Optional[Classification]
@@ -109,6 +117,7 @@ class ClassifyResult(object):
         success=True,
         request_id="",
         email="",
+        normalized_email="",
         domain="",
         provider=None,
         classification=None,
@@ -120,6 +129,7 @@ class ClassifyResult(object):
         self.success = success
         self.request_id = request_id
         self.email = email
+        self.normalized_email = normalized_email
         self.domain = domain
         self.provider = provider
         self.classification = classification
@@ -135,6 +145,7 @@ class ClassifyResult(object):
             success=data.get("success", True),
             request_id=data.get("request_id", ""),
             email=data.get("email", ""),
+            normalized_email=data.get("normalized_email", ""),
             domain=data.get("domain", ""),
             provider=Provider.from_dict(data.get("provider")),
             classification=Classification.from_dict(data.get("classification")),
@@ -152,6 +163,7 @@ class BatchResultItem(object):
     input = ""  # type: str
     success = True  # type: bool
     domain = ""  # type: str
+    normalized_email = ""  # type: str
     provider = None  # type: Optional[Provider]
     classification = None  # type: Optional[Classification]
     confidence = 0.0  # type: float
@@ -163,6 +175,7 @@ class BatchResultItem(object):
         input="",
         success=True,
         domain="",
+        normalized_email="",
         provider=None,
         classification=None,
         confidence=0.0,
@@ -172,6 +185,7 @@ class BatchResultItem(object):
         self.input = input
         self.success = success
         self.domain = domain
+        self.normalized_email = normalized_email
         self.provider = provider
         self.classification = classification
         self.confidence = confidence
@@ -185,6 +199,7 @@ class BatchResultItem(object):
             input=data.get("input", ""),
             success=data.get("success", True),
             domain=data.get("domain", ""),
+            normalized_email=data.get("normalized_email", ""),
             provider=Provider.from_dict(data.get("provider")),
             classification=Classification.from_dict(data.get("classification")),
             confidence=data.get("confidence", 0.0),

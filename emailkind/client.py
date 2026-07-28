@@ -14,7 +14,7 @@ from .exceptions import (
 )
 from .models import BatchResult, BulkJob, ClassifyResult, Rule
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 _DEFAULT_BASE_URL = "https://emailkind.com"
 _DEFAULT_TIMEOUT = 30
